@@ -6,6 +6,7 @@ import com.eindopdracht.garagebedrijf.model.Customer;
 import com.eindopdracht.garagebedrijf.repository.CarRepository;
 import com.eindopdracht.garagebedrijf.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,10 @@ public class CustomerService {
             customerDtoList.add(dto);
         }
         return customerDtoList;
+    }
+
+    public void deleteCustomer(@RequestBody Long id) {
+        customerRepository.deleteById(id);
     }
 
     public CustomerDto getCustomerById(Long id) {
