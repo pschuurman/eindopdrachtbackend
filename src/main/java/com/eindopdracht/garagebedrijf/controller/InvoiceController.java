@@ -6,12 +6,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 public class InvoiceController {
 
     private final InvoiceService invoiceService;
 
     public InvoiceController(InvoiceService invoiceService) { this.invoiceService = invoiceService; }
+
+    @GetMapping("/invoices")
+    public ResponseEntity<List<InvoiceDto>> getAllInvoices(@RequestParam(value = "partName", required = false) Optional<String> partName) {
+        List<InvoiceDto> invoiceDtoList;
+        invoiceDtoList = invoiceService.getAllInvoices();
+
+        return ResponseEntity.ok().body(invoiceDtoList);
+    }
 
     @GetMapping("/invoices/{id}")
     public ResponseEntity<InvoiceDto> getInvoice(@PathVariable("id")Long id) {
