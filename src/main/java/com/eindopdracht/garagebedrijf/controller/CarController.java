@@ -45,4 +45,13 @@ public class CarController {
         carService.assignCustomerToCar(carId, customerId);
 
     }
+
+    @DeleteMapping("/cars")
+    public ResponseEntity<Object> deleteCar(@PathVariable Long id) {
+        carService.deleteCar(id);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }
+

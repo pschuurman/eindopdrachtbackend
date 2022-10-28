@@ -6,6 +6,7 @@ import com.eindopdracht.garagebedrijf.model.Car;
 import com.eindopdracht.garagebedrijf.repository.CarRepository;
 import com.eindopdracht.garagebedrijf.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,10 @@ public class CarService {
         Car savedCar = this.carRepository.save(car);
 
         return savedCar.getId();
+    }
+
+    public void deleteCar(@RequestBody Long id) {
+        carRepository.deleteById(id);
     }
 
     public void assignCustomerToCar(Long carId, Long customerId) {
