@@ -20,17 +20,15 @@ public class CustomerController {
 
     @GetMapping("/customers")
     public ResponseEntity<List<CustomerDto>> getAllCustomers(@RequestParam(value = "firstName", required = false) Optional<String> firstName) {
-       List<CustomerDto> customerDtoList;
-       customerDtoList = customerService.getAllCustomers();
+        List<CustomerDto> customerDtoList;
+        customerDtoList = customerService.getAllCustomers();
 
         return ResponseEntity.ok().body(customerDtoList);
     }
 
     @GetMapping("/customers/{id}")
-    public ResponseEntity<CustomerDto> getCustomer(@PathVariable("id")Long id) {
-
+    public ResponseEntity<CustomerDto> getCustomer(@PathVariable("id") Long id) {
         CustomerDto customer = customerService.getCustomerById(id);
-
         return ResponseEntity.ok().body(customer);
 
     }
