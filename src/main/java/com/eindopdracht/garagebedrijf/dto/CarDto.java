@@ -7,11 +7,7 @@ public class CarDto {
 
     public String type;
 
-    public CarDto(Long id, String brand, String type) {
-        this.id = id;
-        this.brand = brand;
-        this.type = type;
-    }
+
 
     public Long getId() {
         return id;
