@@ -5,6 +5,7 @@ import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
 import com.eindopdracht.garagebedrijf.model.Repair;
 import com.eindopdracht.garagebedrijf.repository.RepairRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,10 @@ public class RepairService {
 
         return savedRepair.getId();
 
+    }
 
+    public void deleteRepair(@RequestBody Long id) {
+        repairRepository.deleteById(id);
     }
 
 }

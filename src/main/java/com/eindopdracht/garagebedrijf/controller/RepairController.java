@@ -38,4 +38,10 @@ public class RepairController {
         return new ResponseEntity<>(repairId, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/repairs/{id}")
+    public ResponseEntity<Object> deleteRepair(@PathVariable Long id) {
+        repairService.deleteRepair(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
