@@ -5,6 +5,7 @@ import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
 import com.eindopdracht.garagebedrijf.model.Part;
 import com.eindopdracht.garagebedrijf.repository.PartRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,10 @@ public class PartService {
 
         return savedPart.getId();
 
+    }
+
+    public void deletePart(@RequestBody Long id) {
+        partRepository.deleteById(id);
     }
 
 }

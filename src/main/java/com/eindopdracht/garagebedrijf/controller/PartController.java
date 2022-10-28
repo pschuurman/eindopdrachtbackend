@@ -39,4 +39,10 @@ public class PartController {
         return new ResponseEntity<>(partId, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/parts/{id}")
+    public ResponseEntity<Object> deletePart(@PathVariable Long id){
+        partService.deletePart(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
