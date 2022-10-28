@@ -1,25 +1,62 @@
 package com.eindopdracht.garagebedrijf.service;
 
 import com.eindopdracht.garagebedrijf.dto.PartDto;
+import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
 import com.eindopdracht.garagebedrijf.model.Part;
 import com.eindopdracht.garagebedrijf.repository.PartRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PartService {
 
-    private final PartRepository repos;
+    private final PartRepository partRepository;
 
-    public PartService(PartRepository repos) {
-        this.repos = repos;
+    public PartService(PartRepository partRepository) {
+        this.partRepository = partRepository;
     }
+
+    public List<PartDto> getAllParts() {
+        List<Part> partList = partRepository.findAll();
+        List<PartDto> partDtoList = new ArrayList<>();
+
+        for (Part part : partList) {
+            PartDto dto = transferToDto(part);
+            partDtoList.add(dto);
+        }
+        return partDtoList;
+    }
+
+    public PartDto getPartById(Long id) {
+
+        if (partRepository.findById(id).isPresent()) {
+            Part dto = partRepository.findById(id).get();
+            return transferToDto(dto);
+        } else {
+            throw new RecordNotFoundException("geen onderdeel gevonden");
+        }
+    }
+
+    private PartDto transferToDto(Part part) {
+        PartDto dto = new PartDto();
+
+        dto.setId(part.getId());
+        dto.setPartName(part.getPartName());
+        dto.setPrice(part.getPrice());
+
+        return dto;
+    }
+
+
 
     public Long createPart(PartDto partDto) {
         Part part = new Part();
         part.setPartName(partDto.partName);
         part.setPrice(partDto.price);
 
-        Part savedPart = this.repos.save(part);
+        Part savedPart = this.partRepository.save(part);
 
         return savedPart.getId();
 
