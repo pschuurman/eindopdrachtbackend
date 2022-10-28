@@ -34,7 +34,7 @@ public class CustomerService {
 
     public CustomerDto getCustomerById(Long id) {
 
-        if (customerRepository.findById(id).isPresent()){
+        if (customerRepository.findById(id).isPresent()) {
             Customer dto = customerRepository.findById(id).get();
             return transferToDto(dto);
         } else {
@@ -69,9 +69,5 @@ public class CustomerService {
         return savedCustomer.getId();
 
     }
-
-
-
-
 }
 
