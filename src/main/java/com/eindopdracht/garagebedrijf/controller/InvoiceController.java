@@ -31,13 +31,16 @@ public class InvoiceController {
     }
 
 
-
-
-
     @PostMapping("/invoices")
     public ResponseEntity<Long> createInvoice(@RequestBody InvoiceDto invoiceDto) {
         Long invoiceId = invoiceService.createInvoice(invoiceDto);
         return new ResponseEntity<>(invoiceId, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("invoices/{id}")
+    public ResponseEntity<Object> deleteInvoice(@RequestBody Long id) {
+        invoiceService.deleteInvoice(id);
+        return ResponseEntity.noContent().build();
     }
 
 

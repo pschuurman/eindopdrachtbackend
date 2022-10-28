@@ -5,6 +5,7 @@ import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
 import com.eindopdracht.garagebedrijf.model.Invoice;
 import com.eindopdracht.garagebedrijf.repository.InvoiceRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,4 +60,17 @@ public class InvoiceService {
 
         return savedInvoice.getId();
     }
+
+    public void deleteInvoice(@RequestBody Long id) {
+        invoiceRepository.deleteById(id);
+    }
 }
+
+
+
+
+
+
+
+
+
