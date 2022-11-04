@@ -1,6 +1,5 @@
 package com.eindopdracht.garagebedrijf.repository;
 
-import com.eindopdracht.garagebedrijf.dto.CustomerDto;
 import com.eindopdracht.garagebedrijf.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
