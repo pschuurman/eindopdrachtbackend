@@ -40,12 +40,6 @@ public class CarController {
         return new ResponseEntity<>(carId, HttpStatus.CREATED);
     }
 
-    @PutMapping("/cars/{carId}/{customerId}")
-    public void assignCustomerToCar(@PathVariable("carId") Long carId, @PathVariable("customerId") Long customerId) {
-        carService.assignCustomerToCar(carId, customerId);
-
-    }
-
     @DeleteMapping("/cars/{id}")
     public ResponseEntity<Object> deleteCar(@PathVariable Long id) {
         carService.deleteCar(id);

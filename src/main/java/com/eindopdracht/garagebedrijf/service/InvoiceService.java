@@ -3,6 +3,7 @@ package com.eindopdracht.garagebedrijf.service;
 import com.eindopdracht.garagebedrijf.dto.InvoiceDto;
 import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
 import com.eindopdracht.garagebedrijf.model.Invoice;
+import com.eindopdracht.garagebedrijf.repository.CarRepository;
 import com.eindopdracht.garagebedrijf.repository.InvoiceRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +16,11 @@ public class InvoiceService {
 
     private final InvoiceRepository invoiceRepository;
 
-    public InvoiceService(InvoiceRepository invoiceRepository) {
+    private final CarRepository carRepository;
+
+    public InvoiceService(InvoiceRepository invoiceRepository, CarRepository carRepository) {
         this.invoiceRepository = invoiceRepository;
+        this.carRepository = carRepository;
     }
 
     public List<InvoiceDto> getAllInvoices() {
@@ -64,6 +68,24 @@ public class InvoiceService {
     public void deleteInvoice(@RequestBody Long id) {
         invoiceRepository.deleteById(id);
     }
+
+
+    public void assignCarToInvoice(Long invoiceId, Long carId) {
+
+        var optionalCar = carRepository.findById(carId);
+        var optionalInvoice = invoiceRepository.findById(invoiceId);
+
+        if (optionalCar.isPresent() && optionalInvoice.isPresent()) {
+            var invoice = optionalInvoice.get();
+            var car = optionalCar.get();
+
+            invoice.setCar(car);
+            invoiceRepository.save(invoice);
+        } else {
+            throw new RecordNotFoundException();
+        }
+    }
+
 }
 
 

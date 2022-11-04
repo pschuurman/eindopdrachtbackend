@@ -15,6 +15,11 @@ public class Invoice {
     private short price;
 
 
+    @OneToOne
+    Car car;
+
+
+
     public Long getId() {
         return id;
     }
@@ -38,4 +43,8 @@ public class Invoice {
     public void setPrice(short price) {
         this.price = price;
     }
+
+    public Car getCar() { return car; }
+
+    public void setCar(Car car) { this.car = car; }
 }

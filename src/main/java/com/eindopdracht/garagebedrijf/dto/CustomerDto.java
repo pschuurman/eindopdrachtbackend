@@ -14,18 +14,10 @@ public class CustomerDto {
 
     public String postalCode;
 
-    public CustomerDto() {
+    public CustomerDto(){
 
     }
 
-    public CustomerDto(Long id, String firstName, String lastName, String street, Short houseNumber, String postalCode) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.street = street;
-        this.houseNumber = houseNumber;
-        this.postalCode = postalCode;
-    }
 
     public Long getId() {
         return id;

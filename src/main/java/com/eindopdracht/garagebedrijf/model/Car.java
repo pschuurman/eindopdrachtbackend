@@ -14,6 +14,9 @@ public class Car {
 
     private String type;
 
+    @OneToOne(mappedBy = "car")
+    Invoice invoice;
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -56,5 +59,9 @@ public class Car {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public Invoice getInvoice() { return invoice; }
+
+    public void setInvoice(Invoice invoice) { this.invoice = invoice; }
 }
 

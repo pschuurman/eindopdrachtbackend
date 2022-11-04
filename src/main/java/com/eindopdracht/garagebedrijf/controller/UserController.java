@@ -43,6 +43,6 @@ public class UserController {
 
         userRepos.save(newUser);
 
-        return "Done";
+        return "User created";
     }
 }
