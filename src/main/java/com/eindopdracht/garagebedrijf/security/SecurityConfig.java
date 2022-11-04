@@ -62,6 +62,8 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/invoices").hasAuthority("MONTEUR")
                 .antMatchers(HttpMethod.POST, "/repairs").hasAuthority("MONTEUR")
                 .antMatchers(HttpMethod.GET, "/invoices").hasAuthority("KASSA MEDEWERKER")
+                .antMatchers(HttpMethod.POST, "/single/uploadDb").hasAuthority("ADMINISTRATIEF MEDEWERKER")
+                .antMatchers(HttpMethod.GET, "/single/uploadDb").hasAuthority("ADMINISTRATIEF MEDEWERKER")
                 .and()
                 .addFilterBefore(new JwtRequestFilter(jwtService, userDetailsService()), UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable()

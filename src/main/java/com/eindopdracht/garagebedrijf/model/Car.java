@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Car {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     private String brand;
@@ -22,6 +22,11 @@ public class Car {
 
     }
 
+    public Car(Long id, String brand, String type) {
+        this.id = id;
+        this.brand = brand;
+        this. type = type;
+    }
 
     public Long getId() {
         return id;

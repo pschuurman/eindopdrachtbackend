@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Repair {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String partName;
