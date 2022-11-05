@@ -1,10 +1,15 @@
 package com.eindopdracht.garagebedrijf.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class CarPaperDto {
 
-
+    @NotBlank
     String fileName;
+    @NotBlank
     String contentType;
+
+    @NotBlank
     String url;
 
     public CarPaperDto(String fileName, String contentType, String url) {

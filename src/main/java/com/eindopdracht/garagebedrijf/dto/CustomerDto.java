@@ -1,17 +1,25 @@
 package com.eindopdracht.garagebedrijf.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class CustomerDto {
 
+    @NotNull
     public Long id;
 
+    @NotBlank
     public String firstName;
 
+    @NotBlank
     public String lastName;
-
+    @NotBlank
     public String street;
 
+    @NotNull
     public Short houseNumber;
 
+    @NotBlank
     public String postalCode;
 
     public CustomerDto(){

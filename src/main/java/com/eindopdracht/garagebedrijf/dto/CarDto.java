@@ -1,10 +1,16 @@
 package com.eindopdracht.garagebedrijf.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class CarDto {
+
+    @NotNull
     public Long id;
 
+    @NotBlank
     public String brand;
-
+    @NotBlank
     public String type;
 
 

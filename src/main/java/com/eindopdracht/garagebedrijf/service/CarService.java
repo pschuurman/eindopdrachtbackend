@@ -6,6 +6,7 @@ import com.eindopdracht.garagebedrijf.model.Car;
 import com.eindopdracht.garagebedrijf.repository.CarRepository;
 import com.eindopdracht.garagebedrijf.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
@@ -65,10 +66,11 @@ public class CarService {
         return savedCar.getId();
     }
 
-    public void deleteCar(@RequestBody Long id) {
+    public void deleteCar(@PathVariable Long id) {
         carRepository.deleteById(id);
     }
 
+   //werkt nog niet
     public void assignCustomerToCar(Long carId, Long customerId) {
 
         var optionalCustomer = customerRepository.findById(customerId);
@@ -81,7 +83,7 @@ public class CarService {
             car.setCustomer(customer);
             carRepository.save(car);
         } else {
-            throw new RecordNotFoundException();
+            throw new RecordNotFoundException("geen auto gevonden");
         }
 
     }
