@@ -1,7 +1,7 @@
-package com.eindopdracht.garagebedrijf.controller;
+package garagebedrijf.controller;
 
-import com.eindopdracht.garagebedrijf.dto.InvoiceDto;
-import com.eindopdracht.garagebedrijf.service.InvoiceService;
+import garagebedrijf.dto.InvoiceDto;
+import garagebedrijf.service.InvoiceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +35,11 @@ public class InvoiceController {
     public ResponseEntity<Long> createInvoice(@RequestBody InvoiceDto invoiceDto) {
         Long invoiceId = invoiceService.createInvoice(invoiceDto);
         return new ResponseEntity<>(invoiceId, HttpStatus.CREATED);
+    }
+    // test relatie invoice aan auto
+    @PutMapping("/invoices/{id}/car")
+    public void assignCarToInvoice(@PathVariable("id") Long id, @RequestBody InvoiceDto invoiceDto) {
+        invoiceService.assignCarToInvoice(id, invoiceDto.id);
     }
 
     @DeleteMapping("invoices/{id}")

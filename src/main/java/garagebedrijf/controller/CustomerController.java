@@ -1,7 +1,7 @@
-package com.eindopdracht.garagebedrijf.controller;
+package garagebedrijf.controller;
 
-import com.eindopdracht.garagebedrijf.dto.CustomerDto;
-import com.eindopdracht.garagebedrijf.service.CustomerService;
+import garagebedrijf.dto.CustomerDto;
+import garagebedrijf.service.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customers")
-    public ResponseEntity<List<CustomerDto>> getAllCustomers(@RequestParam(value = "firstName", required = false) Optional<String> firstName) {
+    public ResponseEntity<List<CustomerDto>> getAllCustomers() {
         List<CustomerDto> customerDtoList;
         customerDtoList = customerService.getAllCustomers();
 
@@ -39,12 +39,18 @@ public class CustomerController {
         return new ResponseEntity<>(customerId, HttpStatus.CREATED);
     }
 
+    @PutMapping("customers/{id}")
+    public CustomerDto updateCustomer(@PathVariable("id") Long id, @RequestBody CustomerDto customerDto) {
+        customerService.updateCustomer(id, customerDto);
+        return customerDto;
+    }
 
-   @DeleteMapping("/customers/{id}")
-   public ResponseEntity<Object> deleteCustomer(@PathVariable Long id) {
+
+    @DeleteMapping("/customers/{id}")
+    public ResponseEntity<Object> deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
-   }
+    }
 
 }
 

@@ -1,4 +1,4 @@
-package com.eindopdracht.garagebedrijf.dto;
+package garagebedrijf.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

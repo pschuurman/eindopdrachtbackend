@@ -8,9 +8,9 @@ insert into cars(id, brand, type, customer_id) values (2002, 'Mazda', 'Premacy',
 insert into cars(id, brand, type, customer_id) values (2003, 'Toyota', 'Avensis', 1001);
 insert into cars(id, brand, type, customer_id) values (2004, 'Ford', 'C-Max', 1003);
 
-insert into invoices(id, part_name, price) values (3001, 'Uitlaat', 150);
-insert into invoices(id, part_name, price) values (3002, 'Banden', 250);
-insert into invoices(id, part_name, price) values (3003, 'Ruitenwissers', 50);
+insert into invoices(id, part_name, price, car_id) values (3001, 'Uitlaat', 150, 2002);
+insert into invoices(id, part_name, price, car_id) values (3002, 'Banden', 250, 2002);
+insert into invoices(id, part_name, price, car_id) values (3003, 'Ruitenwissers', 50, 2002);
 
 insert into parts(id, part_name, price) values (4001, 'Uitlaat', 150);
 insert into parts(id, part_name, price) values (4002, 'Banden', 250);

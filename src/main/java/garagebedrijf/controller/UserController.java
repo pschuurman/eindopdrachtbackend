@@ -1,10 +1,10 @@
-package com.eindopdracht.garagebedrijf.controller;
+package garagebedrijf.controller;
 
-import com.eindopdracht.garagebedrijf.dto.UserDto;
-import com.eindopdracht.garagebedrijf.model.Role;
-import com.eindopdracht.garagebedrijf.model.User;
-import com.eindopdracht.garagebedrijf.repository.RoleRepository;
-import com.eindopdracht.garagebedrijf.repository.UserRepository;
+import garagebedrijf.dto.UserDto;
+import garagebedrijf.model.Role;
+import garagebedrijf.model.User;
+import garagebedrijf.repository.RoleRepository;
+import garagebedrijf.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

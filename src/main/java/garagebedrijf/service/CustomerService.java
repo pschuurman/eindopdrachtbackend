@@ -1,10 +1,10 @@
-package com.eindopdracht.garagebedrijf.service;
+package garagebedrijf.service;
 
-import com.eindopdracht.garagebedrijf.dto.CustomerDto;
-import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
-import com.eindopdracht.garagebedrijf.model.Customer;
-import com.eindopdracht.garagebedrijf.repository.CarRepository;
-import com.eindopdracht.garagebedrijf.repository.CustomerRepository;
+import garagebedrijf.dto.CustomerDto;
+import garagebedrijf.exceptions.RecordNotFoundException;
+import garagebedrijf.model.Customer;
+import garagebedrijf.repository.CarRepository;
+import garagebedrijf.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -33,10 +33,6 @@ public class CustomerService {
         return customerDtoList;
     }
 
-    public void deleteCustomer(@RequestBody Long id) {
-        customerRepository.deleteById(id);
-    }
-
     public CustomerDto getCustomerById(Long id) {
 
         if (customerRepository.findById(id).isPresent()) {
@@ -46,6 +42,26 @@ public class CustomerService {
             throw new RecordNotFoundException("geen klant gevonden");
         }
     }
+
+    public void updateCustomer(Long id, CustomerDto customerDto) {
+        if(!customerRepository.existsById(id)) {
+            throw new RecordNotFoundException("No customer found");
+        }
+        Customer storedCustomer = customerRepository.findById(id).orElse(null);
+        storedCustomer.setId(customerDto.getId());
+        storedCustomer.setFirstName(customerDto.getFirstName());
+        storedCustomer.setLastName(customerDto.getLastName());
+        storedCustomer.setStreet(customerDto.getStreet());
+        storedCustomer.setHouseNumber(customerDto.getHouseNumber());
+        storedCustomer.setPostalCode(customerDto.getPostalCode());
+        customerRepository.save(storedCustomer);
+    }
+
+    public void deleteCustomer(@RequestBody Long id) {
+        customerRepository.deleteById(id);
+    }
+
+
 
     private CustomerDto transferToDto(Customer customer) {
         CustomerDto dto = new CustomerDto();

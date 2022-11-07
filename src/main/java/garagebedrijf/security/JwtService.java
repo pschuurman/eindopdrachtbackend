@@ -1,4 +1,4 @@
-package com.eindopdracht.garagebedrijf.security;
+package garagebedrijf.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

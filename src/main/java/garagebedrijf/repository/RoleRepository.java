@@ -1,6 +1,6 @@
-package com.eindopdracht.garagebedrijf.repository;
+package garagebedrijf.repository;
 
-import com.eindopdracht.garagebedrijf.model.Role;
+import garagebedrijf.model.Role;
 import org.springframework.data.repository.CrudRepository;
 
 public interface RoleRepository extends CrudRepository<Role, String> {

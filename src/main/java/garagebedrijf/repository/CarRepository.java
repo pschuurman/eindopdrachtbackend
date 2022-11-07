@@ -1,7 +1,10 @@
-package com.eindopdracht.garagebedrijf.repository;
+package garagebedrijf.repository;
 
-import com.eindopdracht.garagebedrijf.model.Car;
+import garagebedrijf.model.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface CarRepository extends JpaRepository<Car, Long> {
+
 }

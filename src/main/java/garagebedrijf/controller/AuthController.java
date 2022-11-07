@@ -1,7 +1,7 @@
-package com.eindopdracht.garagebedrijf.controller;
+package garagebedrijf.controller;
 
-import com.eindopdracht.garagebedrijf.dto.AuthDto;
-import com.eindopdracht.garagebedrijf.security.JwtService;
+import garagebedrijf.dto.AuthDto;
+import garagebedrijf.security.JwtService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

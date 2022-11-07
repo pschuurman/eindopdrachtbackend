@@ -1,9 +1,11 @@
-package com.eindopdracht.garagebedrijf.service;
+package garagebedrijf.service;
 
-import com.eindopdracht.garagebedrijf.dto.RepairDto;
-import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
-import com.eindopdracht.garagebedrijf.model.Repair;
-import com.eindopdracht.garagebedrijf.repository.RepairRepository;
+import garagebedrijf.dto.PartDto;
+import garagebedrijf.dto.RepairDto;
+import garagebedrijf.exceptions.RecordNotFoundException;
+import garagebedrijf.model.Part;
+import garagebedrijf.model.Repair;
+import garagebedrijf.repository.RepairRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -59,6 +61,17 @@ public class RepairService {
 
         return savedRepair.getId();
 
+    }
+
+    public void updateRepair(Long id, RepairDto repairDto) {
+        if(!repairRepository.existsById(id)) {
+            throw new RecordNotFoundException("No repair found");
+        }
+        Repair storedRepair = repairRepository.findById(id).orElse(null);
+        storedRepair.setId(repairDto.getId());
+        storedRepair.setPartName(repairDto.getPartName());
+        storedRepair.setPrice(repairDto.getPrice());
+        repairRepository.save(storedRepair);
     }
 
     public void deleteRepair(@RequestBody Long id) {

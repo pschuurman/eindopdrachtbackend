@@ -1,4 +1,4 @@
-package com.eindopdracht.garagebedrijf.model;
+package garagebedrijf.model;
 
 import javax.persistence.*;
 
@@ -15,7 +15,7 @@ public class Car {
     private String type;
 
     @OneToOne(mappedBy = "car")
-    Invoice invoice;
+    private Invoice invoice;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

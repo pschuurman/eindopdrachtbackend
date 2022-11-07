@@ -1,6 +1,6 @@
-package com.eindopdracht.garagebedrijf.repository;
+package garagebedrijf.repository;
 
-import com.eindopdracht.garagebedrijf.model.Carpaper;
+import garagebedrijf.model.Carpaper;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CarPaperRepository extends JpaRepository<Carpaper, Long> {

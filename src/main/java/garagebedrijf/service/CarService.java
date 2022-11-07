@@ -1,13 +1,12 @@
-package com.eindopdracht.garagebedrijf.service;
+package garagebedrijf.service;
 
-import com.eindopdracht.garagebedrijf.dto.CarDto;
-import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
-import com.eindopdracht.garagebedrijf.model.Car;
-import com.eindopdracht.garagebedrijf.repository.CarRepository;
-import com.eindopdracht.garagebedrijf.repository.CustomerRepository;
+import garagebedrijf.dto.CarDto;
+import garagebedrijf.exceptions.RecordNotFoundException;
+import garagebedrijf.model.Car;
+import garagebedrijf.repository.CarRepository;
+import garagebedrijf.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +14,11 @@ import java.util.List;
 @Service
 public class CarService {
     private final CarRepository carRepository;
-    private final CustomerRepository customerRepository;
+
 
     public CarService(CarRepository carRepository, CustomerRepository customerRepository)
     {
         this.carRepository = carRepository;
-        this.customerRepository = customerRepository;
     }
 
     public List<CarDto> getAllCars() {
@@ -70,22 +68,15 @@ public class CarService {
         carRepository.deleteById(id);
     }
 
-   //werkt nog niet
-    public void assignCustomerToCar(Long carId, Long customerId) {
-
-        var optionalCustomer = customerRepository.findById(customerId);
-        var optionalCar = carRepository.findById(carId);
-
-        if(optionalCustomer.isPresent() && optionalCar.isPresent()) {
-            var customer = optionalCustomer.get();
-            var car = optionalCar.get();
-
-            car.setCustomer(customer);
-            carRepository.save(car);
-        } else {
-            throw new RecordNotFoundException("geen auto gevonden");
+    public void updateCar(Long id, CarDto carDto) {
+        if(!carRepository.existsById(id)) {
+            throw new RecordNotFoundException("No car found");
         }
-
+        Car storedCar = carRepository.findById(id).orElse(null);
+        storedCar.setId(carDto.getId());
+        storedCar.setBrand(carDto.getBrand());
+        storedCar.setType(carDto.getType());
+        carRepository.save(storedCar);
     }
 
 

@@ -1,15 +1,13 @@
-package com.eindopdracht.garagebedrijf.controller;
+package garagebedrijf.controller;
 
-import com.eindopdracht.garagebedrijf.dto.CarDto;
-import com.eindopdracht.garagebedrijf.service.CarService;
+import garagebedrijf.dto.CarDto;
+import garagebedrijf.service.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.function.LongFunction;
 
 
 @RestController
@@ -22,7 +20,7 @@ public class CarController {
     }
 
     @GetMapping("/cars")
-    public ResponseEntity<List<CarDto>> getAllCars(@RequestParam(value = "brand", required = false) Optional<String> brand) {
+    public ResponseEntity<List<CarDto>> getAllCars() {
         List<CarDto> carDtoList;
         carDtoList = carService.getAllCars();
 
@@ -40,6 +38,12 @@ public class CarController {
     public ResponseEntity<Long> createCar(@RequestBody CarDto carDto) {
         Long carId = carService.createCar(carDto);
         return new ResponseEntity<>(carId, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/cars/{id}")
+    public CarDto updateCar(@PathVariable("id") Long id, @RequestBody CarDto carDto) {
+        carService.updateCar(id, carDto);
+        return carDto;
     }
 
     @DeleteMapping("/cars/{id}")

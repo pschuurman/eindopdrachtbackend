@@ -1,4 +1,4 @@
-package com.eindopdracht.garagebedrijf.dto;
+package garagebedrijf.dto;
 
 public class AuthDto {
     public String username;

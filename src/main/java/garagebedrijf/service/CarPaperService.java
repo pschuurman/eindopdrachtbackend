@@ -1,7 +1,7 @@
-package com.eindopdracht.garagebedrijf.service;
+package garagebedrijf.service;
 
-import com.eindopdracht.garagebedrijf.model.Carpaper;
-import com.eindopdracht.garagebedrijf.repository.CarPaperRepository;
+import garagebedrijf.model.Carpaper;
+import garagebedrijf.repository.CarPaperRepository;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

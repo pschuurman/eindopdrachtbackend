@@ -1,7 +1,8 @@
-package com.eindopdracht.garagebedrijf.controller;
+package garagebedrijf.controller;
 
-import com.eindopdracht.garagebedrijf.dto.PartDto;
-import com.eindopdracht.garagebedrijf.service.PartService;
+import garagebedrijf.dto.CustomerDto;
+import garagebedrijf.dto.PartDto;
+import garagebedrijf.service.PartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,12 @@ public class PartController {
     public ResponseEntity<Long> createPart(@RequestBody PartDto partDto) {
         Long partId = partService.createPart(partDto);
         return new ResponseEntity<>(partId, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/parts/{id}")
+    public PartDto updatePart(@PathVariable("id") Long id, @RequestBody PartDto partDto) {
+        partService.updatePart(id, partDto);
+        return partDto;
     }
 
     @DeleteMapping("/parts/{id}")

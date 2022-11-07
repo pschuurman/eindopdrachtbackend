@@ -1,4 +1,4 @@
-package com.eindopdracht.garagebedrijf.security;
+package garagebedrijf.security;
 
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

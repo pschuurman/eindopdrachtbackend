@@ -1,9 +1,9 @@
-package com.eindopdracht.garagebedrijf.controller;
+package garagebedrijf.controller;
 
 
-import com.eindopdracht.garagebedrijf.dto.CarPaperDto;
-import com.eindopdracht.garagebedrijf.model.Carpaper;
-import com.eindopdracht.garagebedrijf.service.CarPaperService;
+import garagebedrijf.dto.CarPaperDto;
+import garagebedrijf.model.Carpaper;
+import garagebedrijf.service.CarPaperService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

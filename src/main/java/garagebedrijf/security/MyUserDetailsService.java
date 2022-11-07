@@ -1,7 +1,7 @@
-package com.eindopdracht.garagebedrijf.security;
+package garagebedrijf.security;
 
-import com.eindopdracht.garagebedrijf.model.User;
-import com.eindopdracht.garagebedrijf.repository.UserRepository;
+import garagebedrijf.model.User;
+import garagebedrijf.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

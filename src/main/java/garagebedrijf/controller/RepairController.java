@@ -1,7 +1,8 @@
-package com.eindopdracht.garagebedrijf.controller;
+package garagebedrijf.controller;
 
-import com.eindopdracht.garagebedrijf.dto.RepairDto;
-import com.eindopdracht.garagebedrijf.service.RepairService;
+import garagebedrijf.dto.PartDto;
+import garagebedrijf.dto.RepairDto;
+import garagebedrijf.service.RepairService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,13 @@ public class RepairController {
         Long repairId = repairService.createRepair(repairDto);
         return new ResponseEntity<>(repairId, HttpStatus.CREATED);
     }
+
+    @PutMapping("/repairs/{id}")
+    public RepairDto updateRepair(@PathVariable("id") Long id, @RequestBody RepairDto repairDto) {
+        repairService.updateRepair(id, repairDto);
+        return repairDto;
+    }
+
 
     @DeleteMapping("/repairs/{id}")
     public ResponseEntity<Object> deleteRepair(@PathVariable Long id) {

@@ -1,9 +1,11 @@
-package com.eindopdracht.garagebedrijf.service;
+package garagebedrijf.service;
 
-import com.eindopdracht.garagebedrijf.dto.PartDto;
-import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
-import com.eindopdracht.garagebedrijf.model.Part;
-import com.eindopdracht.garagebedrijf.repository.PartRepository;
+import garagebedrijf.dto.CustomerDto;
+import garagebedrijf.dto.PartDto;
+import garagebedrijf.exceptions.RecordNotFoundException;
+import garagebedrijf.model.Customer;
+import garagebedrijf.model.Part;
+import garagebedrijf.repository.PartRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -62,6 +64,18 @@ public class PartService {
         return savedPart.getId();
 
     }
+
+    public void updatePart(Long id, PartDto partDto) {
+        if(!partRepository.existsById(id)) {
+            throw new RecordNotFoundException("No part found");
+        }
+        Part storedPart = partRepository.findById(id).orElse(null);
+        storedPart.setId(partDto.getId());
+        storedPart.setPartName(partDto.getPartName());
+        storedPart.setPrice(partDto.getPrice());
+        partRepository.save(storedPart);
+    }
+
 
     public void deletePart(@RequestBody Long id) {
         partRepository.deleteById(id);

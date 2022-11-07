@@ -1,10 +1,10 @@
-package com.eindopdracht.garagebedrijf.service;
+package garagebedrijf.service;
 
-import com.eindopdracht.garagebedrijf.dto.InvoiceDto;
-import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
-import com.eindopdracht.garagebedrijf.model.Invoice;
-import com.eindopdracht.garagebedrijf.repository.CarRepository;
-import com.eindopdracht.garagebedrijf.repository.InvoiceRepository;
+import garagebedrijf.dto.InvoiceDto;
+import garagebedrijf.exceptions.RecordNotFoundException;
+import garagebedrijf.model.Invoice;
+import garagebedrijf.repository.CarRepository;
+import garagebedrijf.repository.InvoiceRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -70,12 +70,12 @@ public class InvoiceService {
     }
 
 
-    public void assignCarToInvoice(Long invoiceId, Long carId) {
+    public void assignCarToInvoice(Long id, Long carId) {
 
+        var optionalInvoice = invoiceRepository.findById(id);
         var optionalCar = carRepository.findById(carId);
-        var optionalInvoice = invoiceRepository.findById(invoiceId);
 
-        if (optionalCar.isPresent() && optionalInvoice.isPresent()) {
+        if (optionalInvoice.isPresent() && optionalCar.isPresent()) {
             var invoice = optionalInvoice.get();
             var car = optionalCar.get();
 

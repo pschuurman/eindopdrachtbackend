@@ -1,4 +1,4 @@
-package com.eindopdracht.garagebedrijf.model;
+package garagebedrijf.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

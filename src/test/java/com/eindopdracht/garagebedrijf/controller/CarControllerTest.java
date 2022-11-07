@@ -1,8 +1,9 @@
 package com.eindopdracht.garagebedrijf.controller;
 
-import com.eindopdracht.garagebedrijf.dto.CarDto;
-import com.eindopdracht.garagebedrijf.security.JwtService;
-import com.eindopdracht.garagebedrijf.service.CarService;
+import garagebedrijf.controller.CarController;
+import garagebedrijf.dto.CarDto;
+import garagebedrijf.security.JwtService;
+import garagebedrijf.service.CarService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;

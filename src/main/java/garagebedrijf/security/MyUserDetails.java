@@ -1,7 +1,7 @@
-package com.eindopdracht.garagebedrijf.security;
+package garagebedrijf.security;
 
-import com.eindopdracht.garagebedrijf.model.Role;
-import com.eindopdracht.garagebedrijf.model.User;
+import garagebedrijf.model.Role;
+import garagebedrijf.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

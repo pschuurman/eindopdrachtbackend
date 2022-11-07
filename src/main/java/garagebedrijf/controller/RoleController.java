@@ -1,8 +1,8 @@
-package com.eindopdracht.garagebedrijf.controller;
+package garagebedrijf.controller;
 
-import com.eindopdracht.garagebedrijf.dto.RoleDto;
-import com.eindopdracht.garagebedrijf.model.Role;
-import com.eindopdracht.garagebedrijf.repository.RoleRepository;
+import garagebedrijf.dto.RoleDto;
+import garagebedrijf.model.Role;
+import garagebedrijf.repository.RoleRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
