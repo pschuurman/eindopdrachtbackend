@@ -28,13 +28,6 @@ public class Customer {
 
     }
 
-    public Customer(Long id, String lastName, String street, short houseNumber, String postalCode) {
-        this.id = id;
-        this.lastName = lastName;
-
-
-    }
-
     public Long getId() {
         return id;
     }
