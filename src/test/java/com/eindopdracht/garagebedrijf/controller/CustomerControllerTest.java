@@ -1,9 +1,8 @@
 package com.eindopdracht.garagebedrijf.controller;
 
-import garagebedrijf.controller.CustomerController;
-import garagebedrijf.dto.CustomerDto;
-import garagebedrijf.security.JwtService;
-import garagebedrijf.service.CustomerService;
+import com.eindopdracht.garagebedrijf.dto.CustomerDto;
+import com.eindopdracht.garagebedrijf.security.JwtService;
+import com.eindopdracht.garagebedrijf.service.CustomerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
