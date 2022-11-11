@@ -4,6 +4,7 @@ import com.eindopdracht.garagebedrijf.dto.CarDto;
 import com.eindopdracht.garagebedrijf.exceptions.RecordNotFoundException;
 import com.eindopdracht.garagebedrijf.model.Car;
 import com.eindopdracht.garagebedrijf.repository.CarRepository;
+import com.eindopdracht.garagebedrijf.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -13,9 +14,11 @@ import java.util.List;
 public class CarService {
 
     private final CarRepository carRepository;
+    private final CustomerRepository customerRepository;
 
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, CustomerRepository customerRepository) {
         this.carRepository = carRepository;
+        this.customerRepository = customerRepository;
     }
 
     public List<CarDto> getAllCars() {
@@ -34,11 +37,11 @@ public class CarService {
 
         dto.setId(car.getId());
         dto.setBrand(car.getBrand());
-        dto.setType(car.getType());;
+        dto.setType(car.getType());
+        ;
 
         return dto;
     }
-
 
 
     public CarDto getCarById(Long id) {
@@ -69,7 +72,7 @@ public class CarService {
     }
 
     public void updateCar(Long id, CarDto carDto) {
-        if(!carRepository.existsById(id)) {
+        if (!carRepository.existsById(id)) {
             throw new RecordNotFoundException("No car found");
         }
         Car storedCar = carRepository.findById(id).orElse(null);
@@ -79,5 +82,21 @@ public class CarService {
         carRepository.save(storedCar);
     }
 
+    public void assignCustomerToCar(Long id, Long customerId) {
+        var optionalCar = carRepository.findById(id);
+        var optionalCustomer = customerRepository.findById(customerId);
+
+        if (optionalCar.isPresent() && optionalCustomer.isPresent()) {
+            var car = optionalCar.get();
+            var customer = optionalCustomer.get();
+
+            car.setCustomer(customer);
+            carRepository.save(car);
+        } else {
+            throw new RecordNotFoundException();
+        }
+
+
+    }
 
 }

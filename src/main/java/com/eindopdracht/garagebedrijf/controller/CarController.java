@@ -48,5 +48,9 @@ public class CarController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/cars/{id}/{customerId}")
+    public void assignCustomerToCar(@PathVariable("id") Long id, @PathVariable("customerId") Long customerid) {
+        carService.assignCustomerToCar(id, customerid);
+    }
 
 }
