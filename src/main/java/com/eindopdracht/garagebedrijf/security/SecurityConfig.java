@@ -66,6 +66,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/invoices").hasAuthority("MONTEUR")
                 .antMatchers(HttpMethod.GET, "/invoices/{id}").hasAuthority("KASSA MEDEWERKER")
                 .antMatchers(HttpMethod.PUT, "/invoices/{id}").hasAuthority("MONTEUR")
+                .antMatchers(HttpMethod.PUT, "/invoices/{id}/{carId").hasAuthority("MONTEUR")
                 .antMatchers(HttpMethod.DELETE, "/invoices/{id}").hasAuthority("MONTEUR")
                 .antMatchers(HttpMethod.POST, "/repairs").hasAuthority("MONTEUR")
                 .antMatchers(HttpMethod.PUT, "/repairs/{id}").hasAuthority("MONTEUR")

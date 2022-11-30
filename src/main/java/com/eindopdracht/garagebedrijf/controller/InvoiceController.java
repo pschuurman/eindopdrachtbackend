@@ -43,4 +43,9 @@ public class InvoiceController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/invoices/{id}/{carId}")
+    public void assignCarToInvoice(@PathVariable("id") Long id, @PathVariable("carId") Long carId) {
+        invoiceService.assignCarToInvoice(id, carId);
+    }
+
 }
