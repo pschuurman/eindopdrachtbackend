@@ -6,6 +6,7 @@ import com.eindopdracht.garagebedrijf.model.Customer;
 import com.eindopdracht.garagebedrijf.repository.CarRepository;
 import com.eindopdracht.garagebedrijf.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class CustomerService {
         customerRepository.save(storedCustomer);
     }
 
-    public void deleteCustomer(@RequestBody Long id) {
+    public void deleteCustomer(@PathVariable Long id) {
         customerRepository.deleteById(id);
     }
 

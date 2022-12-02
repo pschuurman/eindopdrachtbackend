@@ -38,7 +38,7 @@ public class CarService {
         dto.setId(car.getId());
         dto.setBrand(car.getBrand());
         dto.setType(car.getType());
-        ;
+
 
         return dto;
     }
